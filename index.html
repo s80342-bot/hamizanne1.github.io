@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Bento Landing Page | HAMIZAN BIN JAMIAN</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Rule 4: Clean, Scientific, and Modern Color Palette */
+        :root {
+            --color-background: #f8f9fa; /* Soft White/Light Grey */
+            --color-card-bg: #ffffff;    /* Pure White */
+            --color-text-primary: #212529; /* Near Black */
+            --color-text-secondary: #6c757d; /* Soft Grey */
+            /* UPDATED: Deep Ocean Blue Accent Color */
+            --color-accent: #004d99;     
+            --border-radius: 12px;
+            --spacing: 16px;
+        }
+
+        /* --- Global Styles --- */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--color-background);
+            color: var(--color-text-primary);
+            margin: 0;
+            padding: var(--spacing);
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+        }
+
+        /* --- Bento Grid Container --- */
+        .bento-container {
+            width: 100%;
+            max-width: 1200px;
+            /* Rule 2: Grid Layout on Desktop */
+            display: grid;
+            gap: var(--spacing);
+            /* Define the desktop grid structure: 4 columns for flexibility */
+            grid-template-columns: repeat(4, 1fr);
+            grid-auto-rows: minmax(120px, auto); /* Standard row height */
+        }
+
+        /* --- Card Styles --- */
+        .card {
+            background-color: var(--color-card-bg);
+            border-radius: var(--border-radius);
+            padding: var(--spacing);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+            transition: transform 0.2s, box-shadow 0.2s;
+            overflow: hidden;
+            border: 1px solid #e9ecef; /* Very light border for definition */
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--color-accent);
+        }
+
+        .card-content {
+            font-size: 0.95rem;
+            color: var(--color-text-secondary);
+        }
+
+        /* --- Card Sizing (Desktop) --- */
+
+        /* Card 1 (Profile: Large box (2x2) */
+        .card-profile {
+            grid-column: span 2;
+            grid-row: span 2;
+        }
+
+        /* Card 2 (Location: Small box (1x1) */
+        .card-location {
+            grid-column: span 1;
+            grid-row: span 1;
+        }
+
+        /* Card 3 (Tech Stack: Medium box (1x2) */
+        .card-tech-stack {
+            grid-column: span 1;
+            grid-row: span 2;
+        }
+
+        /* Card 4 (Case Study: Medium box (2x1) - takes the remaining space in row 1 */
+        .card-case-study {
+            grid-column: span 2;
+            grid-row: span 1;
+        }
+
+        /* Card 5 (Hobby: Small box (1x1) - sits below Card 4 */
+        .card-hobby {
+            grid-column: span 1;
+            grid-row: span 1;
+        }
+
+        /* Card 6 (Playlist: Wide box (4x1) - wide bottom bar */
+        .card-playlist {
+            grid-column: span 4;
+            min-height: 80px;
+            /* Flex layout for bottom bar content */
+            flex-direction: row;
+            align-items: center;
+        }
+        
+        /* Specific Content Styling */
+        .profile-content h1 {
+            font-size: 2.5rem;
+            margin: 0 0 0.5rem 0;
+            color: var(--color-text-primary);
+        }
+
+        .profile-content p {
+            font-size: 1.1rem;
+            margin: 0 0 0.5rem 0;
+            color: var(--color-text-secondary);
+        }
+        
+        .social-links a {
+            color: var(--color-accent);
+            text-decoration: none;
+            margin-right: var(--spacing);
+            font-weight: 600;
+        }
+
+        .social-links a:hover {
+            text-decoration: underline;
+        }
+        
+        .list-items {
+            list-style: none;
+            padding: 0;
+        }
+
+        .list-items li {
+            padding: 4px 0;
+            border-bottom: 1px solid #f1f3f5;
+        }
+
+        .placeholder-box {
+            background-color: #e9ecef;
+            color: var(--color-text-secondary);
+            text-align: center;
+            padding: 10px;
+            border-radius: 6px;
+            font-style: italic;
+        }
+
+        /* --- Rule 2: Mobile Responsiveness (Vertical Stack) --- */
+        @media (max-width: 768px) {
+            .bento-container {
+                /* Stack all cards vertically in a single column */
+                grid-template-columns: 1fr;
+                /* Reset specific grid areas to stack */
+                grid-column: span 1 !important;
+                grid-row: span 1 !important;
+            }
+
+            .card-profile,
+            .card-location,
+            .card-tech-stack,
+            .card-case-study,
+            .card-hobby,
+            .card-playlist {
+                grid-column: span 1;
+                grid-row: span 1;
+            }
+
+            .profile-content h1 {
+                font-size: 2rem;
+            }
+            
+            .card-playlist {
+                /* Stack elements vertically on mobile for the wide card */
+                flex-direction: column;
+                align-items: flex-start;
+                min-height: 150px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="bento-container">
+
+        <div class="card card-profile">
+            <div class="profile-content">
+                <h1>HAMIZAN BIN JAMIAN</h1>
+                <p><strong>Program:</strong> Agroteknologi (B.Sc. Hons)</p>
+                <p><strong>Year:</strong> Year 4 Student</p>
+                <p>Innovating Agroteknology safety.</p>
+            </div>
+            <div class="social-links">
+                <a href="#" target="_blank">LinkedIn</a>
+                <a href="#" target="_blank">GitHub</a>
+                <a href="#" target="_blank">UMT Portal</a>
+            </div>
+        </div>
+
+        <div class="card card-location">
+            <p class="card-title">Campus Hub</p>
+            <div class="card-content">
+                <p><strong>Location:</strong> UMT, Kuala Nerus</p>
+                <p><strong>Current Time:</strong> 10:46 AM MYT</p>
+            </div>
+        </div>
+
+        <div class="card card-case-study">
+            <p class="card-title">Recent Work</p>
+            <div class="card-content">
+                <h3>**Case Study: Starch Gelatinization in Local Kuih**</h3>
+                <p>Analyzing texture profiles of traditional Malaysian Kuih Lapis to optimize recipe standardization and improve quality control in small-scale food production.</p>
+            </div>
+        </div>
+
+        <div class="card card-hobby">
+            <p class="card-title">Campus Life</p>
+            <div class="card-content">
+                <p><strong>Activity:</strong> Briskwalk every morning at Pantai UMT.</p>
+                <p>A focus on health and appreciating the local marine environment.</p>
+            </div>
+        </div>
+
+        <div class="card card-tech-stack">
+            <p class="card-title">Core Subjects</p>
+            <ul class="list-items card-content">
+                <li>Fundanmantel of Science Soil</li>
+                <li>Microbiology</li>
+                <li>System Computer and Application</li>
+                <li>Agronomy and Crop Physiology</li>
+            </ul>
+        </div>
+        
+        <div class="card card-playlist">
+            <p class="card-title" style="margin-right: 20px; margin-bottom: 0;">Study Soundtrack</p>
+            <div class="placeholder-box" style="flex-grow: 1;">
+                Music Player Placeholder: Lo-fi Beats for Focus
+            </div>
+        </div>
+        
+    </div>
+</body>
+</html>
