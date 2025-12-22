@@ -14,7 +14,7 @@
             --color-text-primary: #212529; /* Near Black */
             --color-text-secondary: #6c757d; /* Soft Grey */
             /* Deep Ocean Blue Accent Color */
-            --color-accent: #004d99;     
+            --color-accent: #004d99;      
             --border-radius: 12px;
             --spacing: 16px;
         }
@@ -58,43 +58,40 @@
             flex-direction: column;
             justify-content: space-between;
         }
-/* ... existing CSS code ... */
+        
+        /* Card 1 (Profile: Large box (2x2) */
+        .card-profile {
+            grid-column: span 2;
+            grid-row: span 2;
+            
+            /* === START: BACKGROUND IMAGE UPDATES === */
+            /* Anda perlu meletakkan fail 'bg.jpg' di lokasi yang sama dengan fail HTML ini */
+            background-image: url('bg.jpg'); 
+            background-size: cover;          
+            background-position: center;      
+            background-repeat: no-repeat;    
+            
+            /* Optional: Use a semi-transparent dark overlay to keep the text readable against the image */
+            background-color: rgba(0, 0, 0, 0.4); 
+            background-blend-mode: multiply;        
 
-/* --- Card Sizing (Desktop) --- */
+            /* Ensure text is readable against a dark background */
+            color: #ffffff; 
+        }
 
-/* Card 1 (Profile: Large box (2x2) */
-.card-profile {
-    grid-column: span 2;
-    grid-row: span 2;
-    
-    /* === START: BACKGROUND IMAGE UPDATES === */
-    background-image: url('bg.jpg'); /* Set the relative path to your image */
-    background-size: cover;          /* Ensures the image covers the entire card area */
-    background-position: center;     /* Centers the image */
-    background-repeat: no-repeat;    /* Prevents tiling */
-    
-    /* Optional: Use a semi-transparent dark overlay to keep the text readable against the image */
-    background-color: rgba(0, 0, 0, 0.4); /* Fallback color/overlay base */
-    background-blend-mode: multiply;       /* Blends the image and the background-color */
+        /* Also update the text colors within the profile card for contrast */
+        .card-profile .profile-content h1 {
+            color: #ffffff; /* White name */
+        }
 
-    /* Ensure text is readable against a dark background */
-    color: #ffffff; /* Change text color to white for better contrast */
-}
+        .card-profile .profile-content p {
+            color: #ced4da; /* Light gray descriptive text */
+        }
 
-/* Also update the text colors within the profile card for contrast */
-.card-profile .profile-content h1 {
-    color: #ffffff; /* White name */
-}
-
-.card-profile .profile-content p {
-    color: #ced4da; /* Light gray descriptive text */
-}
-
-.card-profile .social-links a {
-    color: #90bfff; /* Lighter accent blue for links on dark background */
-}
-
-/* ... existing CSS code ... */}
+        .card-profile .social-links a {
+            color: #90bfff; /* Lighter accent blue for links on dark background */
+        }
+        
         /* Theme Tweak 3: Subtle scale-up hover effect */
         .card:hover {
             transform: scale(1.02); 
@@ -115,12 +112,8 @@
 
         /* --- Card Sizing (Desktop) --- */
 
-        /* Card 1 (Profile: Large box (2x2) */
-        .card-profile {
-            grid-column: span 2;
-            grid-row: span 2;
-        }
-
+        /* Card 1 (Profile: Large box (2x2) - already defined above */
+        
         /* Card 2 (Location: Small box (1x1) */
         .card-location {
             grid-column: span 1;
@@ -158,23 +151,49 @@
             /* Flex layout for bottom bar content */
             flex-direction: row;
             align-items: center;
+            justify-content: flex-start; /* Aligns title to start */
         }
         
+        /* --- KOD BARU: Navigation Bar Card --- */
+        .card-navigation {
+            grid-column: span 4;
+            /* Gunakan warna aksen untuk bar navigasi yang menonjol */
+            background-color: var(--color-accent); 
+            color: #ffffff;
+            padding: 10px var(--spacing);
+            display: flex;
+            justify-content: center; /* Pusat pautan */
+            align-items: center;
+            gap: 40px; /* Jarak antara item navigasi */
+            min-height: 60px;
+            box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-navigation a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 600;
+            padding: 8px 16px;
+            border-radius: 6px;
+            transition: background-color 0.2s;
+        }
+
+        .card-navigation a:hover {
+            background-color: rgba(255, 255, 255, 0.15); /* Kesan hover yang lembut */
+        }
+
         /* Specific Content Styling */
         .profile-content h1 {
             font-size: 2.5rem;
             margin: 0 0 0.5rem 0;
-            color: var(--color-text-primary);
         }
 
         .profile-content p {
             font-size: 1.1rem;
             margin: 0 0 0.5rem 0;
-            color: var(--color-text-secondary);
         }
         
         .social-links a {
-            color: var(--color-accent);
             text-decoration: none;
             margin-right: var(--spacing);
             font-weight: 600;
@@ -218,10 +237,19 @@
             .card-tech-stack,
             .card-case-study,
             .card-hobby,
-            .card-reflection, /* Ensure new card stacks correctly */
-            .card-playlist {
+            .card-reflection, 
+            .card-playlist,
+            .card-navigation { /* Memastikan navigasi juga bertindan dengan betul */
                 grid-column: span 1;
                 grid-row: span 1;
+            }
+            
+            .card-navigation {
+                /* Susun butang secara menegak pada mudah alih */
+                flex-direction: column; 
+                gap: 10px;
+                min-height: 100px;
+                padding: var(--spacing);
             }
 
             .profile-content h1 {
@@ -229,10 +257,14 @@
             }
             
             .card-playlist {
-                /* Stack elements vertically on mobile for the wide card */
+                /* Susun elemen secara menegak pada mudah alih */
                 flex-direction: column;
                 align-items: flex-start;
                 min-height: 150px;
+            }
+            
+            .card-playlist .card-title {
+                margin-bottom: 10px;
             }
         }
     </style>
@@ -258,7 +290,7 @@
             <p class="card-title">Campus Hub</p>
             <div class="card-content">
                 <p><strong>Location:</strong> UMT, Kuala Nerus</p>
-                <p><strong>Current Time:</strong> 11:58 AM MYT</p>
+                <p><strong>Current Time:</strong> 12:13 PM MYT</p>
             </div>
         </div>
 
@@ -301,6 +333,12 @@
             <div class="placeholder-box" style="flex-grow: 1;">
                 Music Player Placeholder: Lo-fi Beats for Focus
             </div>
+        </div>
+
+        <div class="card card-navigation">
+            <a href="#">&#x2B05; Projek Sebelumnya</a> 
+            <a href="#">Laman Utama</a>
+            <a href="#">Projek Seterusnya &#x27A1;</a>
         </div>
         
     </div>
