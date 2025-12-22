@@ -13,7 +13,7 @@
             --color-card-bg: #ffffff;    /* Pure White */
             --color-text-primary: #212529; /* Near Black */
             --color-text-secondary: #6c757d; /* Soft Grey */
-            /* UPDATED: Deep Ocean Blue Accent Color */
+            /* Deep Ocean Blue Accent Color */
             --color-accent: #004d99;     
             --border-radius: 12px;
             --spacing: 16px;
@@ -50,17 +50,55 @@
             border-radius: var(--border-radius);
             padding: var(--spacing);
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
-            transition: transform 0.2s, box-shadow 0.2s;
+            /* Updated for Theme Tweak 3: Added scale transition */
+            transition: transform 0.3s ease-in-out, box-shadow 0.2s;
             overflow: hidden;
             border: 1px solid #e9ecef; /* Very light border for definition */
             display: flex;
             flex-direction: column;
             justify-content: space-between;
         }
+/* ... existing CSS code ... */
 
+/* --- Card Sizing (Desktop) --- */
+
+/* Card 1 (Profile: Large box (2x2) */
+.card-profile {
+    grid-column: span 2;
+    grid-row: span 2;
+    
+    /* === START: BACKGROUND IMAGE UPDATES === */
+    background-image: url('bg.jpg'); /* Set the relative path to your image */
+    background-size: cover;          /* Ensures the image covers the entire card area */
+    background-position: center;     /* Centers the image */
+    background-repeat: no-repeat;    /* Prevents tiling */
+    
+    /* Optional: Use a semi-transparent dark overlay to keep the text readable against the image */
+    background-color: rgba(0, 0, 0, 0.4); /* Fallback color/overlay base */
+    background-blend-mode: multiply;       /* Blends the image and the background-color */
+
+    /* Ensure text is readable against a dark background */
+    color: #ffffff; /* Change text color to white for better contrast */
+}
+
+/* Also update the text colors within the profile card for contrast */
+.card-profile .profile-content h1 {
+    color: #ffffff; /* White name */
+}
+
+.card-profile .profile-content p {
+    color: #ced4da; /* Light gray descriptive text */
+}
+
+.card-profile .social-links a {
+    color: #90bfff; /* Lighter accent blue for links on dark background */
+}
+
+/* ... existing CSS code ... */}
+        /* Theme Tweak 3: Subtle scale-up hover effect */
         .card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            transform: scale(1.02); 
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
         }
 
         .card-title {
@@ -103,6 +141,12 @@
 
         /* Card 5 (Hobby: Small box (1x1) - sits below Card 4 */
         .card-hobby {
+            grid-column: span 1;
+            grid-row: span 1;
+        }
+
+        /* Card 7 (Reflection: Small box (1x1) - sits next to Hobby card */
+        .card-reflection {
             grid-column: span 1;
             grid-row: span 1;
         }
@@ -174,6 +218,7 @@
             .card-tech-stack,
             .card-case-study,
             .card-hobby,
+            .card-reflection, /* Ensure new card stacks correctly */
             .card-playlist {
                 grid-column: span 1;
                 grid-row: span 1;
@@ -213,7 +258,7 @@
             <p class="card-title">Campus Hub</p>
             <div class="card-content">
                 <p><strong>Location:</strong> UMT, Kuala Nerus</p>
-                <p><strong>Current Time:</strong> 10:46 AM MYT</p>
+                <p><strong>Current Time:</strong> 11:58 AM MYT</p>
             </div>
         </div>
 
@@ -232,6 +277,14 @@
                 <p>A focus on health and appreciating the local marine environment.</p>
             </div>
         </div>
+        
+        <div class="card card-reflection">
+            <p class="card-title">Why Food Tech Matters in Malaysia</p>
+            <div class="card-content">
+                <p>Sustainable food security is crucial for our future. By optimizing local processing methods, we can reduce waste and improve nutrition.</p>
+            </div>
+        </div>
+
 
         <div class="card card-tech-stack">
             <p class="card-title">Core Subjects</p>
